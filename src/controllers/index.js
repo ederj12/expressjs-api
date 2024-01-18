@@ -1,6 +1,6 @@
-const jobsController = require('./jobs');
 const contractsController = require('./contracts');
+const jobsController = require('./jobs');
 module.exports = {
-  jobsController,
-  contractsController
+  contractsController,
+  jobsController
 };

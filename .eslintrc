@@ -4,6 +4,11 @@
     "commonjs": true,
     "es2021": true
   },
+  "plugins": ["require-sort"],
   "extends": ["eslint:recommended"],
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "require-sort/require-sort": "error"
+  },
   "root": true
 }

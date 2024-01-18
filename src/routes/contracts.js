@@ -1,6 +1,7 @@
 const { Router } = require('express');
-const { getProfile } = require('../middleware/getProfile');
 const { contractsController } = require('../controllers');
+const { getProfile } = require('../middleware/getProfile');
+
 const router = Router();
 
 router.get('/', getProfile, async (req, res, next) => {
