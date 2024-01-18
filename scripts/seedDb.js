@@ -1,4 +1,4 @@
-const { Profile, Contract, Job } = require('../src/model');
+const { Contract, Job, Profile } = require('../src/model');
 
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();
