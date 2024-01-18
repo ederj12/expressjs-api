@@ -1,16 +1,16 @@
 const { contractsRouter, jobsRouter, profilesRouter } = require('./routes');
+const { db } = require('../DB');
 const dotenv = require('dotenv');
 const express = require('express');
 const morgan = require('morgan');
-const { sequelize } = require('./model');
 
 const app = express();
 
 dotenv.config();
 
 app.use(express.json());
-app.set('sequelize', sequelize);
-app.set('models', sequelize.models);
+app.set('sequelize', db.sequelize);
+app.set('models', db.sequelize.models);
 app.use(morgan('tiny'));
 
 app.use('/profiles', profilesRouter);

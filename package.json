@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "nodemon ./src/server.js",
-    "seed": "node ./scripts/seedDb.js"
+    "seed": "node ./DB/scripts/seedDb.js"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
