@@ -6,8 +6,8 @@ const router = Router();
 router.get('/unpaid', getProfile, async (req, res, next) => {
   try {
     const models = req.app.get('models');
-    const { dataValues } = req.profile;
-    const jobs = await jobsController.getUnpaidJobs(dataValues, models);
+    const profile = req.profile;
+    const jobs = await jobsController.getUnpaidJobs(profile, models);
     res.json(jobs);
   } catch (error) {
     next(error);
@@ -21,7 +21,7 @@ router.post('/:job_id/pay', getProfile, async (req, res, next) => {
     const models = req.app.get('models');
 
     const client = req.profile;
-    if (client.dataValues.type !== 'client') {
+    if (client.type !== 'client') {
       return res.status(400).end();
     }
     const jobId = req.params.job_id;

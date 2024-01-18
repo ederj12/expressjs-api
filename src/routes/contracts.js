@@ -7,11 +7,8 @@ const router = Router();
 router.get('/', getProfile, async (req, res, next) => {
   try {
     const { Contract } = req.app.get('models');
-    const { dataValues } = req.profile;
-    const contracts = await contractsController.getContracts(
-      dataValues,
-      Contract
-    );
+    const profile = req.profile;
+    const contracts = await contractsController.getContracts(profile, Contract);
     res.json(contracts);
   } catch (error) {
     next(error);
@@ -22,10 +19,10 @@ router.get('/:id', getProfile, async (req, res, next) => {
   try {
     const { Contract } = req.app.get('models');
     const { id } = req.params;
-    const { dataValues } = req.profile;
+    const profile = req.profile;
     const contract = await contractsController.getContractById(
       id,
-      dataValues,
+      profile,
       Contract
     );
     res.json(contract);

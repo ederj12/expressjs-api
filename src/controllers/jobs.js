@@ -22,8 +22,7 @@ module.exports = {
 
     if (!job) throw errors.jobPaid;
 
-    if (client.dataValues.balance < job.dataValues.price)
-      throw errors.balanceError;
+    if (client.balance < job.price) throw errors.balanceError;
 
     const contract = await Contract.findOne({
       raw: true,
@@ -36,9 +35,9 @@ module.exports = {
       where: { id: contract.ContractorId }
     });
 
-    const jobPrice = job.dataValues.price;
-    contractor.balance = contractor.dataValues.balance + jobPrice;
-    client.balance = client.dataValues.balance - jobPrice;
+    const jobPrice = job.price;
+    contractor.balance = contractor.balance + jobPrice;
+    client.balance = client.balance - jobPrice;
 
     //update contractor
     await contractor.save({ fields: ['balance'] });
