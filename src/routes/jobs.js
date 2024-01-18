@@ -1,13 +1,13 @@
 const { Router } = require('express');
 const { getProfile } = require('../middleware/getProfile');
-const { getUnpaidJobs, payJob } = require('../controllers/jobs');
+const { jobsController } = require('../controllers');
 const router = Router();
 
 router.get('/unpaid', getProfile, async (req, res, next) => {
   try {
     const models = req.app.get('models');
     const { dataValues } = req.profile;
-    const jobs = await getUnpaidJobs(dataValues, models);
+    const jobs = await jobsController.getUnpaidJobs(dataValues, models);
     res.json(jobs);
   } catch (error) {
     next(error);
@@ -26,7 +26,7 @@ router.post('/:job_id/pay', getProfile, async (req, res, next) => {
     }
     const jobId = req.params.job_id;
 
-    const payment = await payJob(jobId, client, models);
+    const payment = await jobsController.payJob(jobId, client, models);
     await transaction.commit();
     res.status(200).json(payment);
   } catch (error) {
