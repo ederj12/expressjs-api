@@ -99,6 +99,22 @@ Thank you and good luck! 🙏
 
 ## Eder Notes!!!
 
+```
+yarn
+```
+
+```
+yarn seed
+```
+
+```
+yarn test
+```
+
+```
+yarn start
+```
+
 You could find postman collection and environment
 
 # Pending
@@ -108,3 +124,4 @@ You could find postman collection and environment
 - Add repositorie/db layer
 - Use typescript
 - Add swagger
+- React FE
