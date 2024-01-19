@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "4e7b9a24-e885-4d59-a850-a0061f7b4ff2",
+		"name": "expressjs-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21286509"
+	},
+	"item": [
+		{
+			"name": "/profiles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/profiles",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"profiles"
+					],
+					"query": [
+						{
+							"key": "profile_id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jobs/:job_id/pay",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "1",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{host}}/jobs/1/pay",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jobs",
+						"1",
+						"pay"
+					]
+				},
+				"description": "StartFragmentPay for a job, a client can only pay if his balance >= the amount to pay. The amount should be moved from the client's balance to the contractor balanceEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "/balances/deposit/:userId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/balances/deposit/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"balances",
+						"deposit",
+						"1"
+					]
+				},
+				"description": "Deposits money into the the the balance of a client, a client can't deposit more than 25% his total of jobs to pay. (at the deposit moment)EndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "/jobs/unpaid",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "4",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/jobs/unpaid",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jobs",
+						"unpaid"
+					]
+				},
+				"description": "StartFragmentGet all unpaid jobs for a user (_**either**_ a client or contractor), for _**active contracts only**_.EndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "/contracts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "4",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/contracts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contracts"
+					]
+				},
+				"description": "Returns a list of contracts belonging to a user (client or contractor), the list should only contain non terminated contracts."
+			},
+			"response": []
+		},
+		{
+			"name": "/contracts/:id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/contracts/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contracts",
+						"1"
+					]
+				},
+				"description": "It returns the contract only if it belongs to the profile calling."
+			},
+			"response": []
+		},
+		{
+			"name": "/admin/best-clients?start=<date>&end=<date>&limit=<integer>",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/admin/best-clients?start=2024-01-18&end=2024-01-19&limit=2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"admin",
+						"best-clients"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-01-18"
+						},
+						{
+							"key": "end",
+							"value": "2024-01-19"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				},
+				"description": "returns the clients the paid the most for jobs in the query time period. limit query parameter should be applied, default limit is 2.EndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "/admin/best-profession?start=<date>&end=<date>",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "profile_id",
+						"value": "1",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/admin/best-profession?start=2024-01-18&end=2024-01-19",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"admin",
+						"best-profession"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-01-18"
+						},
+						{
+							"key": "end",
+							"value": "2024-01-19"
+						}
+					]
+				},
+				"description": "the profession that earned the most money (sum of jobs paid) for any contactor that worked in the query time range.EndFragment"
+			},
+			"response": []
+		}
+	]
+}

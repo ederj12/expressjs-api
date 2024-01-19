@@ -96,3 +96,15 @@ It would be great for example if you'd write some unit test / simple frontend de
 When you have finished the assignment, zip your repo (make sure to include .git folder) and send us the zip.
 
 Thank you and good luck! 🙏
+
+## Eder Notes!!!
+
+You could find postman collection and environment
+
+# Pending
+
+- Pending best
+- Improve date management
+- Add repositorie/db layer
+- Use typescript
+- Add swagger
