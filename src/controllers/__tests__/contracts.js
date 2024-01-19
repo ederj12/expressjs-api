@@ -3,7 +3,7 @@ const { db } = require('../../../DB');
 const { errors } = require('../../utils');
 const { Contract } = db.sequelize.models;
 
-describe('', () => {
+describe('Test contracts controller', () => {
   beforeEach(async () => {
     //seed
   });
