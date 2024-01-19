@@ -1,8 +1,13 @@
 const { Op } = require('sequelize');
 module.exports = {
+  bestProfession: async (start, end, models) => {
+    const { Profile, Contract, Job } = models;
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    //pending to implement logic
+  },
   bestClients: async (start, end, limit, models) => {
     const { Profile, Contract, Job } = models;
-
     const startDate = new Date(start);
     const endDate = new Date(end);
 

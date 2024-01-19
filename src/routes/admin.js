@@ -4,8 +4,12 @@ const router = Router();
 
 router.get('/best-profession', async (req, res, next) => {
   try {
-    //pending to implement
-    res.status(200).send('/best-profession');
+    const { start, end } = req.query;
+    const models = req.app.get('models');
+
+    //const result = await adminController.bestProfession(start, end, models);
+
+    res.status(200).send();
   } catch (error) {
     next(error);
   }
